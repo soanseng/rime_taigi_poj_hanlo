@@ -49,4 +49,8 @@ RUN pip install behave
 # Get Taigi IME for Rime
 WORKDIR /
 RUN git clone https://github.com/i3thuan5/rime_taigi_poj_hanlo.git
-WORKDIR rime_taigi_poj_hanlo/
+WORKDIR rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat/
+
+# Run Behave BDD
+behave /rime_taigi_poj_hanlo/BDD/features
+
