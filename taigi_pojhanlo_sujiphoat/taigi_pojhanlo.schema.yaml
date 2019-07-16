@@ -55,6 +55,18 @@ menu:
   page_size: 8
 
 
+speller:
+  alphabet: 'abeghijklmnopstu,./- 123456789ABEGHIJKLMNOPSTU'
+  initials: 'abeghijklmnopstu,./-ABEGHIJKLMNOPSTU'
+  finals: " 123456789"
+  delimiter: " -"
+  use_space: true
+  algebra:
+    - abbrev/^([abeghijklmnopstuABEGHIJKLMNOPSTU]).+$/$1/
+    - derive/^([A-Za-z]+)\d$/$1/
+    - abbrev/^([abeghijklmnopstuABEGHIJKLMNOPSTU]).+(\d)$/$1$2/
+
+
 translator: # 翻譯特定類型ê編碼段，變做一組候選ê文字
   dictionary: taigi_pojhanlo    # 設定 table_translator 使用ê詞典名：xxx.dict.yaml
 
