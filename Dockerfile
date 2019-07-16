@@ -37,7 +37,6 @@ RUN cp *.a /usr/lib
 WORKDIR /
 RUN git clone https://github.com/rime/librime.git
 WORKDIR librime/
-RUN git reset --hard HEAD
 RUN make
 RUN make install
 
@@ -50,6 +49,4 @@ RUN pip install behave
 # Get Taigi IME for Rime
 WORKDIR /
 RUN git clone https://github.com/i3thuan5/rime_taigi_poj_hanlo.git
-WORKDIR rime_taigi_poj_hanlo/
-RUN git reset --hard HEAD
-WORKDIR rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat/
+WORKDIR /rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat/
