@@ -31,6 +31,7 @@ switches:
 engine: # 輸入法iăn-jín
   processors:   # 核心處理器
     - ascii_composer    # 處理英文模式kap華英文切換
+    - recognizer
     - key_binder    # Tī特定條件，將key pa̍k去其他ê key
     - speller   # 拼寫處理器，接受字元key，編輯輸入碼
     - punctuator    # 標點符號處理器，將孤1-ê字元key直接對應到標點符號a̍h是文字
@@ -40,14 +41,16 @@ engine: # 輸入法iăn-jín
   
   segmentors:   # Hun段標記處理
     - ascii_segmentor   # 標記英文段落（譬喻tī英文模式），字母直接送去螢幕。
+    - matcher
     - abc_segmentor # 標記abc輸入碼《abc》ê類型
     - punct_segmentor   # 標記標點符號段落《punct》
     - fallback_segmentor    # 將輸入碼liâm做1段
 
   translators:  # 翻譯輸入ê編碼段，變做一組候選ê文字
-    - echo_translator   # 將輸入ê編碼產生1-ê候選詞
+#    - echo_translator   # 將輸入ê編碼產生1-ê候選詞
     - punct_translator  # 配合 punct_segmentor 轉換標點符號
     - table_translator    # 碼表式ê轉換
+    - script_translator
 
 
 menu:
@@ -56,15 +59,15 @@ menu:
 
 
 speller:
-  alphabet: 'abeghijklmnopstu,./- 123456789ABEGHIJKLMNOPSTU'
-  initials: 'abeghijklmnopstu,./-ABEGHIJKLMNOPSTU'
-  finals: " 123456789"
-  delimiter: " -"
-  use_space: true
-  algebra:
-    - abbrev/^([abeghijklmnopstuABEGHIJKLMNOPSTU]).+$/$1/
-    - derive/^([A-Za-z]+)\d$/$1/
-    - abbrev/^([abeghijklmnopstuABEGHIJKLMNOPSTU]).+(\d)$/$1$2/
+ alphabet: 'abeghijklmnopstu,./- 123456789ABEGHIJKLMNOPSTU'
+ initials: 'abeghijklmnopstu,./-ABEGHIJKLMNOPSTU'
+ finals: " 123456789"
+ delimiter: " -"
+ use_space: true
+ algebra:
+   - abbrev/^([abeghijklmnopstuABEGHIJKLMNOPSTU]).+$/$1/
+   - derive/^([A-Za-z]+)\d$/$1/
+   - abbrev/^([abeghijklmnopstuABEGHIJKLMNOPSTU]).+(\d)$/$1$2/
 
 
 translator: # 翻譯特定類型ê編碼段，變做一組候選ê文字
