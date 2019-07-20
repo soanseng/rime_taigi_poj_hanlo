@@ -41,10 +41,10 @@ RUN make
 RUN make install
 
 # Install Python Behave
-RUN apt-get install curl
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-RUN python get-pip.py
-RUN pip install behave
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install behave
+## https://github.com/docker-library/python/blob/f82205cde8f0a5ffa276103a50d843edced67757/3.5/stretch/Dockerfile#L12-L14
+ENV LANG C.UTF-8
 
 # Get Taigi IME for Rime
 WORKDIR /
