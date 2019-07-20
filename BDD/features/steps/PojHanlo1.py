@@ -1,4 +1,5 @@
 import sys
+import re
 
 from behave import *
 import subprocess
@@ -13,13 +14,27 @@ def step_impl(context, phengim_sujip):
     context.process = subprocess.Popen(
         ["/librime/build/bin/rime_api_console"],
         stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-	encoding='utf-8',
+        encoding='utf-8',
         cwd="."
     )
     (context.out, _err) = context.process.communicate(phengim_sujip)
 
 @then('1.候選詞內底ē出現字詞「{jisu}」。')
 def step_impl(context, jisu):
-    if jisu not in context.out:
-        raise AssertionError('Bo chhut-hian {} ti {}'.format(jisu, context.out))
+    kiamcha_soanhang(jisu, context.out)
+    #if jisu not in context.out:
+    #     raise AssertionError('Bo chhut-hian {} ti {}'.format(jisu, context.out))
+
+def kiamcha_soanhang(jisu, out):
+    pate=re.compile('\d+\.  {} \Z'.format(jisu))
+    choohap=re.compile('\d+\. \[{}\]\Z'.format(jisu))
+    khaisi = False
+    for chua in out.split('\n'):
+        if chua.startswith('page: '):
+            khaisi = True
+        if khaisi:
+            if pate.match(chua) or choohap.match(chua):
+                break
+    else:
+        raise AssertionError('Bo chhut-hian {} ti {}'.format(jisu, out))
 
