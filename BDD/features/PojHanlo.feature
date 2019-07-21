@@ -45,7 +45,7 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
 
 
   Scenario Outline: 5.預設詞頻選字
-    Given 5.Nā詞庫內底有「<jisu1>」、「<jisu2>」chit 2-ê字詞，拼音kāng款是「<phengim_with_space>」，而且<jisu1> 預設ê詞頻khah koân。
+    Given 5.Nā詞庫內底有「<jisu1>」、「<jisu2>」chit 2-ê字詞，拼音kāng款是「<phengim_with_space>」，而且字詞「<jisu1>」預設ê詞頻khah koân。
      When 5.輸入完整ê拼音字母（無空白）。
      Then 5.候選詞內底ē先出現字詞「<jisu1>」。
 

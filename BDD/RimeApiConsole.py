@@ -4,8 +4,9 @@ import sys
 import subprocess
 import re
 
+
 rime_api_console_path_docker = "/librime/build/bin/rime_api_console"
-rime_api_console_path_mac_os = "../librime/build/bin/Release/rime_api_console"
+rime_api_console_path_mac_os = "../../librime/build/bin/Release/rime_api_console"
 
 
 def call(console_input):
