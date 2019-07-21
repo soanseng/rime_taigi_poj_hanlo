@@ -3,7 +3,7 @@ import RimeApiConfig
 import RimeApiConsole
 
 
-@given('4.Nā詞庫內底有「{jisu}」chit-ê詞，拼音是「{phengim_with_space}」。')
+@given('4.Nā詞庫內底有「{jisu}」chit-ê字詞，拼音是「{phengim_with_space}」。')
 def step_impl(context, jisu, phengim_with_space):
     found_word = RimeApiConfig.dict_contains_word(jisu, phengim_with_space)
     assert found_word is not False

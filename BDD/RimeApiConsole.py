@@ -24,8 +24,14 @@ def call(console_input):
         encoding='utf-8',
         cwd=working_path
     )
-    (out, _err) = process.communicate(console_input)
-    return out
+
+    print("RimeApiConsole輸入：", console_input)
+
+    (console_output, _err) = process.communicate(console_input)
+
+    print("RimeApiConsole輸出：", console_output)
+
+    return console_output
 
 
 def output_exists_candidate(console_output, jisu):
