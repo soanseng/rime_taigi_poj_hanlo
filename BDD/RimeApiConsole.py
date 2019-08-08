@@ -36,16 +36,40 @@ def call(console_input):
 
 
 def output_exists_candidate(console_output, jisu):
-    pate = re.compile('\d+\.  {} \Z'.format(jisu))
-    choohap = re.compile('\d+\. \[{}\]\Z'.format(jisu))
+    default_candidate_regex = re.compile('\d+\. \[{}\]\Z'.format(jisu))
+    other_candidate_regex = re.compile('\d+\.  {} \Z'.format(jisu))
+
     found_candidates = False
     found = False
     for line in console_output.split('\n'):
         if line.startswith('page: '):
             found_candidates = True
+            continue
         if found_candidates:
-            if pate.match(line) or choohap.match(line):
+            if other_candidate_regex.match(line) or default_candidate_regex.match(line):
                 found = True
                 break
 
     return found
+
+
+def output_candidates_fit_orders(console_output, jisu1, jisu2):
+    default_candidate_regex = re.compile('\d+\. \[{}\]\Z'.format(jisu1))
+    other_candidate_regex = re.compile('\d+\.  {} \Z'.format(jisu2))
+
+    found_candidates = False
+    found_first = False
+    found_first_then_second = False
+    for line in console_output.split('\n'):
+        if line.startswith('page: '):
+            found_candidates = True
+            continue
+        if found_candidates:
+            if default_candidate_regex.match(line):
+                found_first = True
+                continue
+            if found_first and other_candidate_regex.match(line):
+                found_first_then_second = True
+                break
+
+    return found_first_then_second
