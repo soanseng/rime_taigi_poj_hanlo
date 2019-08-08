@@ -4,7 +4,7 @@ import RimeApiConsole
 from io import StringIO
 
 
-@given('3.Nā詞庫內底有「{jisu}」chit-ê字詞，拼音是「{phengim_with_space}」。')
+@given('04.Nā詞庫內底有「{jisu}」chit-ê字詞，拼音是「{phengim_with_space}」。')
 def step_impl(context, jisu, phengim_with_space):
     dict_word_lines = []
     dict_word_lines.append(jisu + "\t" +phengim_with_space + "\n")
@@ -14,7 +14,7 @@ def step_impl(context, jisu, phengim_with_space):
     found_word = RimeApiConfig.dict_contains_word(jisu, phengim_with_space)
     assert found_word is not False
 
-@when('3.Kan-na輸入拼音頭1-ê字母。')
+@when('04.Kan-na輸入拼音頭1-ê拉丁字母。')
 def step_impl(context):
     split_words = context.phengim_with_space.split()
     string_builder = StringIO()
@@ -27,10 +27,10 @@ def step_impl(context):
     context.out = RimeApiConsole.call(phengim_sujip)
     pass
 
-@then('3.候選詞內底ē出現字詞「{jisu}」。')
+@then('04.候選詞內底ē出現字詞「{jisu}」。')
 def step_impl(context, jisu):
     found_jisu = RimeApiConsole.output_exists_candidate(context.out, jisu)
     if found_jisu:
         pass
     else:
-        raise AssertionError('無出現 {} tī {}'.format(jisu, context.out))
+        raise AssertionError('無出現 {} tī \n{}'.format(jisu, context.out))
