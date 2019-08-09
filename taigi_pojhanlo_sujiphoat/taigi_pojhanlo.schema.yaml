@@ -58,18 +58,26 @@ menu:
   page_size: 8
 
 
-speller:
+speller:    # 拼寫運算詳解 https://github.com/rime/home/wiki/SpellingAlgebra
  alphabet: 'abceghijklmnoprstuABCEGHIJKLMNOPRSTU123456789'
  initials: 'abceghijklmnoprstuABCEGHIJKLMNOPRSTU'
  finals: "123456789"
  delimiter: " -"
  use_space: true
  algebra:
-   - derive/^([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]+)\d$/$1/ # 無聲調輸入，免phah數字
+   # 簡化輸入
+   - derive/^([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]+)[1-9]$/$1/ # 無聲調輸入，免phah數字
    - abbrev/^([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]).+[14]$/$1/  # 第1、4聲ē-sái免輸入聲調
    - abbrev/^([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]).+$/$1/  # 頭1-ê拉丁字母簡拼輸入
    - abbrev/^((a|b|chh|ch|e|g|h|i|j|k|l|m|ng|n|o|p|r|s|t|u|A|B|Chh|CHH|Ch|CH|E|G|H|I|J|K|L|M|Ng|NG|N|O|P|R|S|T|U)).+$/$1/  # 頭1-ê台語字母簡拼輸入
-
+   # 容允錯誤處理
+   - derive/ia([nt])([1-9])$/e$1$2/ # 容允錯誤：Kā「ian」寫做「en」、kā「iat」寫做「et」。
+   - derive/^(Ia|IA)([ntNT])([1-9])$/E$2$3/ # 容允錯誤：Kā「Ian/IAN」寫做「En/EN」、kā「Iat/IAT」寫做「Et/ET」。
+   - derive/o([ae])([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/u$1$2$3/ # 容允錯誤：Kā「oa」寫做「ua」、kā「oe」寫做「ue」。
+   - derive/^O([aeAE])([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/O$1$2$3/ # 容允錯誤：Kā「Oa/OA」寫做「Ua/UA」、kā「Oe/OE」寫做「Ue/UE」。
+   # 容允舊ê輸入款式
+   - derive/oo([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/ou$1$2/ # 容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「oo」phah做「ou」。
+   - derive/^(Oo|OO)([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/OU$2$3/ # 容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「Oo/OO」phah做「OU」。
 
 translator: # 翻譯特定類型ê編碼段，變做一組候選ê文字
   dictionary: taigi_pojhanlo    # 設定 table_translator 使用ê詞典名：xxx.dict.yaml
