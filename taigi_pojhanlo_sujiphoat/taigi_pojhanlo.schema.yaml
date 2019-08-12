@@ -72,12 +72,19 @@ speller:    # 拼寫運算詳解 https://github.com/rime/home/wiki/SpellingAlgeb
    - abbrev/^((a|b|chh|ch|e|g|h|i|j|k|l|m|ng|n|o|p|r|s|t|u|A|B|Chh|CHH|Ch|CH|E|G|H|I|J|K|L|M|Ng|NG|N|O|P|R|S|T|U)).+$/$1/  # 頭1-ê台語字母簡拼輸入
    # 容允錯誤處理
    - derive/ia([nt])([1-9])$/e$1$2/ # 容允錯誤：Kā「ian」寫做「en」、kā「iat」寫做「et」。
-   - derive/^(Ia|IA)([ntNT])([1-9])$/E$2$3/ # 容允錯誤：Kā「Ian/IAN」寫做「En/EN」、kā「Iat/IAT」寫做「Et/ET」。
+   - derive/(Ia|IA)([ntNT])([1-9])$/E$2$3/ # 容允錯誤：Kā「Ian/IAN」寫做「En/EN」、kā「Iat/IAT」寫做「Et/ET」。
    - derive/o([ae])([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/u$1$2$3/ # 容允錯誤：Kā「oa」寫做「ua」、kā「oe」寫做「ue」。
-   - derive/^O([aeAE])([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/O$1$2$3/ # 容允錯誤：Kā「Oa/OA」寫做「Ua/UA」、kā「Oe/OE」寫做「Ue/UE」。
+   - derive/O([aeAE])([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/U$1$2$3/ # 容允錯誤：Kā「Oa/OA」寫做「Ua/UA」、kā「Oe/OE」寫做「Ue/UE」。
+   # 容允教育部羅馬字輸入
+   - derive/^ch([h]*)([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/ts$1$2$3/ # 容允教育部羅馬字輸入：Kā白話字「ch」寫做教育部羅馬字「ts」、kā白話字「chh」寫做教育部羅馬字「tsh」。
+   - derive/^Ch([h]*)([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/Ts$1$2$3/ # 容允教育部羅馬字輸入：Kā白話字「Ch」寫做教育部羅馬字「Ts」、kā白話字「Chh」寫做教育部羅馬字「Tsh」。
+   - derive/^CH([H]*)([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/TS$1$2$3/ # 容允教育部羅馬字輸入：Kā白話字「CH」寫做教育部羅馬字「TS」、kā白話字「CHH」寫做教育部羅馬字「TSH」。
+   - derive/e(ng|k)([1-9])$/i$1$2/ # 容允教育部羅馬字輸入：Kā白話字「eng」寫做教育部羅馬字「ing」、kā白話字「ek」寫做教育部羅馬字「ik」。
+   - derive/E(ng|NG|k|K)([1-9])$/I$1$2/ # 容允教育部羅馬字輸入：Kā白話字「Eng/ENG」寫做教育部羅馬字「Ing/ING」、kā白話字「Ek/EK」寫做教育部羅馬字「Ik/IK」。
    # 容允舊ê輸入款式
    - derive/oo([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/ou$1$2/ # 容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「oo」phah做「ou」。
-   - derive/^(Oo|OO)([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/OU$2$3/ # 容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「Oo/OO」phah做「OU」。
+   - derive/^Oo([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/Ou$1$2/ # 容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「Oo」phah做「Ou」。
+   - derive/^OO([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]*)([1-9])$/OU$1$2/ # 容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「OO」phah做「OU」。
 
 translator: # 翻譯特定類型ê編碼段，變做一組候選ê文字
   dictionary: taigi_pojhanlo    # 設定 table_translator 使用ê詞典名：xxx.dict.yaml

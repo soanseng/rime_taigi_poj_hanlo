@@ -3,7 +3,7 @@ import RimeApiConfig
 import RimeApiConsole
 
 
-@given('14.Nā beh輸入「{jisu}」chit-ê字詞，拼音是「{phengim_with_space}」，拼音內底ê字母有出現是「ch」a̍h是「chh」。')
+@given('16.Nā beh輸入「{jisu}」chit-ê字詞，拼音是「{phengim_with_space}」，拼音內底ê字母有出現是「oo」。')
 def step_impl(context, jisu, phengim_with_space):
     dict_word_lines = []
     dict_word_lines.append(jisu + "\t" + phengim_with_space + "\n")
@@ -14,14 +14,14 @@ def step_impl(context, jisu, phengim_with_space):
     assert found_word is not False
 
 
-@when('14.輸入教育部羅馬字ê拼音字母（無空白），kā白話字「ch」寫做教育部羅馬字「ts」、a̍h是kā白話字「chh」寫做教育部羅馬字「tsh」。')
+@when('16.輸入舊ê輸入款式ê拼音字母（無空白），kā「oo」phah做「ou」。')
 def step_impl(context):
-    phengim_sujip = context.phengim_with_space.replace(" ", "").replace("chh", "tsh").replace("Chh", "Tsh").replace("CHH", "TSH").replace("ch", "ts").replace("Ch", "Ts").replace("CH", "TS")
+    phengim_sujip = context.phengim_with_space.replace(" ", "").replace("oo", "ou").replace("Oo", "Ou").replace("OO", "OU")
     context.out = RimeApiConsole.call(phengim_sujip)
     pass
 
 
-@then('14.候選詞內底mā ē出現正確ê「{jisu}」chit-ê詞。')
+@then('16.候選詞內底mā ē出現正確ê「{jisu}」chit-ê詞。')
 def step_impl(context, jisu):
     found_jisu = RimeApiConsole.output_exists_candidate(context.out, jisu)
     if found_jisu:

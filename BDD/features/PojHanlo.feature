@@ -104,21 +104,21 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | 講 | 台語 | kong2 | Tai5 gi2 |
 
 
-  Scenario Outline: 10.任何拼音羅馬字（無tī字表內底mā ē-sái phah羅馬字）
-    Given 10.Nā詞庫內底無「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
-     When 10.輸入完整ê拼音字母（無空白）。
-     Then 10.候選詞內底ē出現「<jisu>」chit-ê詞。
+  Scenario Outline: 10.羅馬字頭字大寫輸入
+    Given 10.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
+     When 10.輸入音節完整ê拼音字母（無空白），而且頭1-ê字母大寫，m̄-koh無全部大寫。
+     Then 10.候選詞內底ē出現頭字大寫ê「<jisu>」chit-ê詞。
 
     Examples: 試驗範例
      | jisu | phengim_with_space |
-     | góa | goa2 |
-     | 台語 | Tai5 gi2 |
+     | lí | li2 |
+     | ko-hiông | ko1 hiong5 |
 
 
-  Scenario Outline: 11.羅馬字頭字大寫輸入
+  Scenario Outline: 11.羅馬字全部大寫輸入
     Given 11.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
-     When 11.輸入音節完整ê拼音字母（無空白），而且頭1-ê字母大寫，m̄-koh無全部大寫。
-     Then 11.候選詞內底ē出現頭字大寫ê「<jisu>」chit-ê詞。
+     When 11.輸入音節完整ê拼音字母（無空白），而且全部大寫。
+     Then 11.候選詞內底ē出現全部大寫ê「<jisu>」chit-ê詞。
 
     Examples: 試驗範例
      | jisu | phengim_with_space |
@@ -126,21 +126,10 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | ko-hiông | ko1 hiong5 |
 
 
-  Scenario Outline: 12.羅馬字全部大寫輸入
-    Given 12.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
-     When 12.輸入音節完整ê拼音字母（無空白），而且全部大寫。
-     Then 12.候選詞內底ē出現全部大寫ê「<jisu>」chit-ê詞。
-
-    Examples: 試驗範例
-     | jisu | phengim_with_space |
-     | lí | li2 |
-     | ko-hiông | ko1 hiong5 |
-
-
-  Scenario Outline: 13.容允羅馬字輸入錯誤：Kā「ian」寫做「en」、kā「iat」寫做「et」。（包括頭字大寫kap全部大寫ê情形）
-    Given 13.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母結尾是「ian」a̍h是「iat」。
-     When 13.輸入錯誤ê拼音字母（無空白），kā「ian」寫做「en」、a̍h是kā「iat」寫做「et」。
-     Then 13.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
+  Scenario Outline: 12.容允羅馬字輸入錯誤：Kā「ian」寫做「en」、kā「iat」寫做「et」。（包括頭字大寫kap全部大寫ê情形）
+    Given 12.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母結尾是「ian」a̍h是「iat」。
+     When 12.輸入錯誤ê拼音字母（無空白），kā「ian」寫做「en」、a̍h是kā「iat」寫做「et」。
+     Then 12.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
 
     Examples: 試驗範例（包括頭字大寫kap全部大寫ê情形）
      | jisu | phengim_with_space |
@@ -152,10 +141,10 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | KIAT-AN | KIAT4 AN1 |
 
 
-  Scenario Outline: 14.容允羅馬字輸入錯誤：Kā「oa」寫做「ua」、kā「oe」寫做「ue」。（包括頭字大寫kap全部大寫ê情形）
-    Given 14.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母有出現是「oa」a̍h是「oe」。
-     When 14.輸入錯誤ê拼音字母（無空白），kā「oa」寫做「ua」、a̍h是kā「oe」寫做「ue」。
-     Then 14.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
+  Scenario Outline: 13.容允羅馬字輸入錯誤：Kā「oa」寫做「ua」、kā「oe」寫做「ue」。（包括頭字大寫kap全部大寫ê情形）
+    Given 13.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母有出現是「oa」a̍h是「oe」。
+     When 13.輸入錯誤ê拼音字母（無空白），kā「oa」寫做「ua」、a̍h是kā「oe」寫做「ue」。
+     Then 13.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
 
     Examples: 試驗範例（包括頭字大寫kap全部大寫ê情形）
      | jisu | phengim_with_space |
@@ -167,10 +156,40 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | GOE̍H-BÂI | GOEH8 BAI5 |
 
 
-  Scenario Outline: 15.容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「oo」phah做「ou」。（包括頭字大寫kap全部大寫ê情形）
-    Given 15.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母有出現是「oo」。
-     When 15.輸入舊ê輸入款式ê拼音字母（無空白），kā「oo」phah做「ou」。
+  Scenario Outline: 14.容允教育部羅馬字輸入：Kā白話字「ch」寫做教育部羅馬字「ts」、kā白話字「chh」寫做教育部羅馬字「tsh」。（包括頭字大寫kap全部大寫ê情形）
+    Given 14.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母有出現是「ch」a̍h是「chh」。
+     When 14.輸入教育部羅馬字ê拼音字母（無空白），kā白話字「ch」寫做教育部羅馬字「ts」、a̍h是kā白話字「chh」寫做教育部羅馬字「tsh」。
+     Then 14.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
+
+    Examples: 試驗範例（包括頭字大寫kap全部大寫ê情形）
+     | jisu | phengim_with_space |
+     | chhàu-chho | chhau3 chho1 |
+     | Chúi-chhàn-nâ | Chui2 chhan3 na5 |
+     | CHÚI-CHHÀN-NÂ | CHUI2 CHHAN3 NA5 |
+     | chhiò-koa | chhio3 koa1 |
+     | Chhàu-chúi-chng | Chhau3 chui2 chng1 |
+     | CHHÀU-CHÚI-CHNG | CHHAU3 CHUI2 CHNG1 |
+
+
+  Scenario Outline: 15.容允教育部羅馬字輸入：Kā白話字「eng」寫做教育部羅馬字「ing」、kā白話字「ek」寫做教育部羅馬字「ik」。（包括頭字大寫kap全部大寫ê情形）
+    Given 15.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母有出現是「eng」a̍h是「ek」。
+     When 15.輸入教育部羅馬字ê拼音字母（無空白），kā白話字「eng」寫做教育部羅馬字「ing」、a̍h是kā白話字「ek」寫做教育部羅馬字「ik」。
      Then 15.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
+
+    Examples: 試驗範例（包括頭字大寫kap全部大寫ê情形）
+     | jisu | phengim_with_space |
+     | thêng | theng5 |
+     | Sêng-kong | Seng5 kong1 |
+     | SÊNG-KONG | SENG5 KONG1 |
+     | khek | khek4 |
+     | Tek-kok | Tek4 kok4 |
+     | TEK-KOK | TEK4 KOK4 |
+
+
+  Scenario Outline: 16.容允舊ê輸入款式：Kā白話字ê「o͘」預設ê輸入「oo」phah做「ou」。（包括頭字大寫kap全部大寫ê情形）
+    Given 16.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」，拼音內底ê字母有出現是「oo」。
+     When 16.輸入舊ê輸入款式ê拼音字母（無空白），kā「oo」phah做「ou」。
+     Then 16.候選詞內底mā ē出現正確ê「<jisu>」chit-ê詞。
 
     Examples: 試驗範例（包括頭字大寫kap全部大寫ê情形）
      | jisu | phengim_with_space |
@@ -181,3 +200,16 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | tō͘ | too7 |
      | Saⁿ-têng-po͘ | Sann1 teng5 poo1 |
      | SAⁿ-TÊNG-PO͘ | SANN1 TENG5 POO1 |
+
+    
+    
+    
+  Scenario Outline: 21.任何拼音羅馬字（無tī字表內底mā ē-sái phah羅馬字）
+    Given 21.Nā詞庫內底無「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
+     When 21.輸入完整ê拼音字母（無空白）。
+     Then 21.候選詞內底ē出現「<jisu>」chit-ê詞。
+
+    Examples: 試驗範例
+     | jisu | phengim_with_space |
+     | góa | goa2 |
+     | 台語 | Tai5 gi2 |
