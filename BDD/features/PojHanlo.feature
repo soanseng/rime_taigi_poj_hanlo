@@ -93,7 +93,7 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | 台灣 | 埋丸 | tai5 oan5 |
 
 
-  Scenario Outline: 09.詞組選字
+  Scenario Outline: 09.組合新詞組選字
     Given 09.Nā詞庫內底有「<jisu1>」、「<jisu2>」chit 2-ê字詞，拼音是「<phengim1_with_space>」、「<phengim2_with_space>」，而且無「<jisu1><jisu2>」chit-ê詞。
      When 09.輸入2-ê字詞chiap做伙完整ê拼音字母（無空白）。
      Then 09.候選詞內底有機會出現「<jisu1><jisu2>」chit-ê詞組。
@@ -104,7 +104,7 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | 公視 | 台語台 | Kong si7 | Tai5 gi2 tai5 |
 
 
-  Scenario Outline: 10.羅馬字頭字大寫輸入
+  Scenario Outline: 10.羅馬字頭字大寫輸入（透過字表設計）
     Given 10.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
      When 10.輸入音節完整ê拼音字母（無空白），而且頭1-ê字母大寫，m̄-koh無全部大寫。
      Then 10.候選詞內底ē出現頭字大寫ê「<jisu>」chit-ê詞。
@@ -115,7 +115,7 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | Ko-hiông | Ko1 hiong5 |
 
 
-  Scenario Outline: 11.羅馬字全部大寫輸入
+  Scenario Outline: 11.羅馬字全部大寫輸入（透過字表設計）
     Given 11.Nā beh輸入「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
      When 11.輸入音節完整ê拼音字母（無空白），而且全部大寫。
      Then 11.候選詞內底ē出現全部大寫ê「<jisu>」chit-ê詞。
