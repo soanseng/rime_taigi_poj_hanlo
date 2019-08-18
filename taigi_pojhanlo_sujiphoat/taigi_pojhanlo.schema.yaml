@@ -70,7 +70,7 @@ speller:    # 拼寫運算詳解 https://github.com/rime/home/wiki/SpellingAlgeb
  finals: "123456789"
  delimiter: " -"
  use_space: true
- auto_select: true
+ auto_select: false
  algebra:
    # 簡化輸入
    - derive/^([abceghijklmnoprstuABCEGHIJKLMNOPRSTU]+)[1-9]$/$1/ # 無聲調輸入，免phah數字
