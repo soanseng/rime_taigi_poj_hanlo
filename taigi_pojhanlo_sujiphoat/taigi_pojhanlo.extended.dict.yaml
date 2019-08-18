@@ -1,0 +1,8 @@
+# Rime dictionary
+# encoding: utf-8
+---
+name: taigi.extended
+version: "1.0.0"
+sort: by_weight
+use_preset_vocabulary: false
+...

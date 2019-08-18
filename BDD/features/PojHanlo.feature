@@ -85,12 +85,12 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
   Scenario Outline: 08.使用者詞頻選字
     Given 08.Nā詞庫內底有「<jisu1>」、「<jisu2>」chit 2-ê字詞，拼音kāng款是「<phengim_with_space>」，而且<jisu1> 使用者ê詞頻khah koân。
      When 08.輸入完整ê拼音字母（無空白）。
-     Then 08.候選詞內底ē先出現字詞「<jisu1>」。
+     Then 08.候選詞內底ē先出現字詞「<jisu1>」，chiah出現「<jisu2>」。
 
     Examples: 試驗範例
      | jisu1 | jisu2 | phengim_with_space |
-     | 你 | 理 | li2 |
-     | 駛車 | 屎車 | sai2 chhia1 |
+     | 花 | 灰 | hoe |
+     | 台灣 | 埋丸 | tai5 oan5 |
 
 
   Scenario Outline: 09.詞組選字
@@ -100,8 +100,8 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
 
     Examples: 試驗範例
      | jisu1 | jisu2 | phengim1_with_space | phengim2_with_space |
-     | 你 | 好 | li2 | ho2 |
-     | 講 | 台語 | kong2 | Tai5 gi2 |
+     | 火 | 車 | hoe2 | chhia2 |
+     | 公視 | 台語台 | Kong si7 | Tai5 gi2 tai5 |
 
 
   Scenario Outline: 10.羅馬字頭字大寫輸入
@@ -111,8 +111,8 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
 
     Examples: 試驗範例
      | jisu | phengim_with_space |
-     | lí | li2 |
-     | ko-hiông | ko1 hiong5 |
+     | Lí | Li2 |
+     | Ko-hiông | Ko1 hiong5 |
 
 
   Scenario Outline: 11.羅馬字全部大寫輸入
@@ -122,8 +122,8 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
 
     Examples: 試驗範例
      | jisu | phengim_with_space |
-     | lí | li2 |
-     | ko-hiông | ko1 hiong5 |
+     | LÍ | LI2 |
+     | KO-HIÔNG | KO1 HIONG5 |
 
 
   Scenario Outline: 12.容允羅馬字輸入錯誤：Kā「ian」寫做「en」、kā「iat」寫做「et」。（包括頭字大寫kap全部大寫ê情形）
@@ -201,9 +201,9 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
      | Saⁿ-têng-po͘ | Sann1 teng5 poo1 |
      | SAⁿ-TÊNG-PO͘ | SANN1 TENG5 POO1 |
 
-    
-    
-    
+
+
+
   Scenario Outline: 21.任何拼音羅馬字（無tī字表內底mā ē-sái phah羅馬字）
     Given 21.Nā詞庫內底無「<jisu>」chit-ê字詞，拼音是「<phengim_with_space>」。
      When 21.輸入完整ê拼音字母（無空白）。
@@ -211,5 +211,9 @@ Feature: Rime白話字漢羅輸入法方案ê候選詞規則
 
     Examples: 試驗範例
      | jisu | phengim_with_space |
-     | góa | goa2 |
-     | 台語 | Tai5 gi2 |
+     | chŏaⁿ | choann9 |
+     | phiăng | phiang9 |
+     | khiaih | khiaih4 |
+     | chhoaih | chhoaih4 |
+     | soàng | soang3 |
+     | tu̍k | tuk8 |

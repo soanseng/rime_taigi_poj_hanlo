@@ -10,6 +10,7 @@ path_docker = "../BDD/build/"
 path_mac_os = "build/"
 
 dict_filename = "taigi_pojhanlo.dict.yaml"
+user_dict_filename = "taigi_pojhanlo.extended.dict.yaml"
 
 
 def prepare_config_files_for_bdd():
@@ -24,11 +25,10 @@ def prepare_config_files_for_bdd():
             os.remove(os.path.join(working_path, item))
 
     shutil.copy(original_working_path + "default.yaml", working_path)
-    shutil.copy(original_working_path + "symbols.yaml", working_path)
     shutil.copy(original_working_path + "taigi_pojhanlo.dict.yaml", working_path)
+    shutil.copy(original_working_path + "taigi_pojhanlo.extended.dict.yaml", working_path)
     shutil.copy(original_working_path + "taigi_pojhanlo.schema.yaml", working_path)
     shutil.copy(original_working_path + "taigi_pojhanlo.symbol.yaml", working_path)
-    shutil.copy(original_working_path + "taigi_pojhanlo.yaml", working_path)
 
 
 def prepare_dict_file_for_bdd(dict_word_lines):
@@ -58,6 +58,33 @@ def prepare_dict_file_for_bdd(dict_word_lines):
     f.close()
 
 
+def prepare_user_dict_file_for_bdd(dict_word_lines):
+    original_working_path = get_original_working_path()
+    working_path = get_working_path()
+
+    dict_file_path = os.path.join(working_path, user_dict_filename)
+    print("dict_file_path: ", dict_file_path)
+    os.remove(dict_file_path)
+
+    original_dict_file_lines = []
+    with open(original_working_path + user_dict_filename, "r") as original_dict_file:
+        found = False
+        for line in original_dict_file:
+            # print("line:", line)
+            if "..." in line:
+                found = True
+            original_dict_file_lines.append(line)
+            if found:
+                break
+
+    f = open(working_path + user_dict_filename, "w")
+    for original_dict_file_line in original_dict_file_lines:
+        f.write(original_dict_file_line)
+    for dict_word_line in dict_word_lines:
+        f.write(dict_word_line)
+    f.close()
+
+
 def dict_contains_word(jisu, phengim_with_space):
     found = False
     search_string = jisu + "\t" + phengim_with_space
@@ -79,6 +106,31 @@ def dict_contains_word(jisu, phengim_with_space):
     #     print("Search string:\"" + search_string + "\" found!")
     # else:
     #     print("Search string:\"" + search_string + "\" not found!")
+
+    return found
+
+
+def user_dict_contains_word(jisu, phengim_with_space):
+    found = False
+    search_string = jisu + "\t" + phengim_with_space
+
+    if Platform.docker in sys.platform:
+        path = user_dict_filename
+    elif Platform.mac_os in sys.platform:
+        path = path_mac_os + user_dict_filename
+    else:
+        raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
+
+    with open(path, "r") as ins:
+        for line in ins:
+            if line.startswith(search_string):
+                found = True
+                break
+
+    if found:
+        print("Search string:\"" + search_string + "\" found!")
+    else:
+        print("Search string:\"" + search_string + "\" not found!")
 
     return found
 

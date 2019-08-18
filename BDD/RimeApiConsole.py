@@ -36,8 +36,8 @@ def call(console_input):
 
 
 def output_exists_candidate(console_output, jisu):
-    default_candidate_regex = re.compile('\d+\. \[{}\]\Z'.format(jisu))
-    other_candidate_regex = re.compile('\d+\.  {} \Z'.format(jisu))
+    default_candidate_regex = re.compile('\d+\. \[{}\].*'.format(jisu))
+    other_candidate_regex = re.compile('\d+\.  {} .*'.format(jisu))
 
     found_candidates = False
     found = False
@@ -54,8 +54,8 @@ def output_exists_candidate(console_output, jisu):
 
 
 def output_candidates_fit_orders(console_output, jisu1, jisu2):
-    default_candidate_regex = re.compile('\d+\. \[{}\]\Z'.format(jisu1))
-    other_candidate_regex = re.compile('\d+\.  {} \Z'.format(jisu2))
+    default_candidate_regex = re.compile('\d+\. \[{}\].*'.format(jisu1))
+    other_candidate_regex = re.compile('\d+\.  {} .*'.format(jisu2))
 
     found_candidates = False
     found_first = False
