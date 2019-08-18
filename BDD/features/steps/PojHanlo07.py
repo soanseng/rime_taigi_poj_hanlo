@@ -6,7 +6,7 @@ import RimeApiConsole
 @given('07.Nā詞庫內底有「{jisu1}」、「{jisu2}」chit 2-ê字詞，拼音kāng款是「{phengim_with_space}」，而且字詞「{jisu1}」預設ê詞頻khah koân。')
 def step_impl(context, jisu1, jisu2, phengim_with_space):
     dict_word_lines = []
-    dict_word_lines.append(jisu1 + "\t" +phengim_with_space + "\t" + "20%" + "\n")
+    dict_word_lines.append(jisu1 + "\t" + phengim_with_space + "\t" + "20%" + "\n")
     dict_word_lines.append(jisu2 + "\t" + phengim_with_space + "\t" + "10%" + "\n")
     RimeApiConfig.prepare_dict_file_for_bdd(dict_word_lines)
 
