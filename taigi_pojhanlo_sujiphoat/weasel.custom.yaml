@@ -1,7 +1,7 @@
 # Weasel for Windows
 # 輸入介面設定
-# 位置：%APPDATA%\Rime\squirrel.custom.yaml
-# 參考：https://github.com/rime/artworks/tree/master/squirrel-color-schemes
+# 位置：%APPDATA%\Rime\weasel.custom.yaml
+# 參考：https://github.com/rime/artworks/tree/master/weasel-color-schemes
 
 patch:
   "style/color_scheme": lost_temple
