@@ -1,0 +1,11 @@
+# default.custom.yaml
+# save it to: 
+#   ~/.config/ibus/rime  (linux)
+#   ~/Library/Rime       (macos)
+#   %APPDATA%\Rime       (windows)
+
+patch:
+  schema_list:
+    - schema: taigi_pojhanlo
+
+  switcher/fix_schema_list_order: true # 固定方案選單ê順序
