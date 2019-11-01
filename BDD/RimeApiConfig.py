@@ -2,6 +2,7 @@ import Platform
 import sys
 import shutil
 import os
+from os.path import join
 
 original_path_docker = "."
 original_path_mac_os = "../taigi_pojhanlo_sujiphoat/"
@@ -18,17 +19,20 @@ def prepare_config_files_for_bdd():
     working_path = get_working_path()
     print("original_working_path: ", original_working_path)
     print("working_path: ", working_path)
-
+    os.makedirs('build', exist_ok=True)
     list_dir = os.listdir(working_path)
     for item in list_dir:
         if item.endswith(".yaml"):
             os.remove(os.path.join(working_path, item))
 
-    shutil.copy(original_working_path + "default.yaml", working_path)
-    shutil.copy(original_working_path + "taigi_pojhanlo.dict.yaml", working_path)
-    shutil.copy(original_working_path + "taigi_pojhanlo.extended.dict.yaml", working_path)
-    shutil.copy(original_working_path + "taigi_pojhanlo.schema.yaml", working_path)
-    shutil.copy(original_working_path + "taigi_pojhanlo.symbol.yaml", working_path)
+    for filename in [
+        "default.yaml",
+        "taigi_pojhanlo.dict.yaml",
+        "taigi_pojhanlo.extended.dict.yaml",
+        "taigi_pojhanlo.schema.yaml",
+        "taigi_pojhanlo.symbol.yaml"
+    ]:
+        shutil.copy(join(original_working_path, filename), working_path)
 
 
 def prepare_dict_file_for_bdd(dict_word_lines):
@@ -40,7 +44,8 @@ def prepare_dict_file_for_bdd(dict_word_lines):
     os.remove(dict_file_path)
 
     original_dict_file_lines = []
-    with open(original_working_path + dict_filename, "r") as original_dict_file:
+    with open(join(original_working_path, dict_filename),
+              "r") as original_dict_file:
         found = False
         for line in original_dict_file:
             # print("line:", line)
