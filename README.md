@@ -3,5 +3,9 @@
 
 ```
 docker build . -t rime
-docker run --rm -ti -v `pwd`/BDD:/rime_taigi_poj_hanlo/BDD rime bash
+docker run --rm \
+  -v `pwd`/BDD:/rime_taigi_poj_hanlo/BDD \
+  -v `pwd`/taigi_pojhanlo_sujiphoat:/rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat \
+  rime ./runBehaveBDD.sh
+
 ```
