@@ -72,7 +72,7 @@ def prepare_user_dict_file_for_bdd(dict_word_lines):
     os.remove(dict_file_path)
 
     original_dict_file_lines = []
-    with open(original_working_path + user_dict_filename, "r") as original_dict_file:
+    with open(join(original_working_path, user_dict_filename), "r") as original_dict_file:
         found = False
         for line in original_dict_file:
             # print("line:", line)
@@ -106,13 +106,7 @@ def user_dict_contains_word(jisu, phengim_with_space):
     found = False
     search_string = jisu + "\t" + phengim_with_space
 
-    if Platform.docker in sys.platform:
-        path = user_dict_filename
-    elif Platform.mac_os in sys.platform:
-        path = path_mac_os + user_dict_filename
-    else:
-        raise RuntimeError(
-            "Unsupported operating system: {}".format(sys.platform))
+    path = join(get_working_path(), user_dict_filename)
 
     with open(path, "r") as ins:
         for line in ins:
