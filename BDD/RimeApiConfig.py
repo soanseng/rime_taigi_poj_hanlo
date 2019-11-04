@@ -59,7 +59,7 @@ def prepare_dict_file_for_bdd(dict_word_lines):
         f.write(original_dict_file_line)
     for dict_word_line in dict_word_lines:
         f.write(dict_word_line)
-        f.write(dict_word_line)
+        f.write("niau\tniau\n")
     f.close()
 
 
