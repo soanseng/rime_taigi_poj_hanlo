@@ -7,5 +7,6 @@ docker run --rm \
   -v `pwd`/BDD:/rime_taigi_poj_hanlo/BDD \
   -v `pwd`/taigi_pojhanlo_sujiphoat:/rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat \
   -e PYTHONPATH="/rime_taigi_poj_hanlo/BDD" \
+  --workdir "/rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat/"
   rime behave /rime_taigi_poj_hanlo/BDD/features
 ```

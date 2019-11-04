@@ -46,7 +46,3 @@ RUN pip3 install behave
 ## https://github.com/docker-library/python/blob/f82205cde8f0a5ffa276103a50d843edced67757/3.5/stretch/Dockerfile#L12-L14
 ENV LANG C.UTF-8
 
-# Get Taigi IME for Rime
-WORKDIR /
-RUN git clone https://github.com/i3thuan5/rime_taigi_poj_hanlo.git
-WORKDIR /rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat/
