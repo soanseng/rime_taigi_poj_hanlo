@@ -17,10 +17,10 @@ user_dict_filename = "taigi_pojhanlo.extended.dict.yaml"
 def prepare_config_files_for_bdd():
     original_working_path = get_original_working_path()
     working_path = get_working_path()
+    os.makedirs(working_path, exist_ok=True)
+    list_dir = os.listdir(working_path)
     print("original_working_path: ", original_working_path)
     print("working_path: ", working_path)
-    os.makedirs('build', exist_ok=True)
-    list_dir = os.listdir(working_path)
     for item in list_dir:
         if item.endswith(".yaml"):
             os.remove(os.path.join(working_path, item))
@@ -38,7 +38,6 @@ def prepare_config_files_for_bdd():
 def prepare_dict_file_for_bdd(dict_word_lines):
     original_working_path = get_original_working_path()
     working_path = get_working_path()
-
     dict_file_path = os.path.join(working_path, dict_filename)
     print("dict_file_path: ", dict_file_path)
     os.remove(dict_file_path)
@@ -112,7 +111,8 @@ def user_dict_contains_word(jisu, phengim_with_space):
     elif Platform.mac_os in sys.platform:
         path = path_mac_os + user_dict_filename
     else:
-        raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
+        raise RuntimeError(
+            "Unsupported operating system: {}".format(sys.platform))
 
     with open(path, "r") as ins:
         for line in ins:
@@ -134,7 +134,8 @@ def get_original_working_path():
     elif Platform.mac_os in sys.platform:
         return original_path_mac_os
     else:
-        raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
+        raise RuntimeError(
+            "Unsupported operating system: {}".format(sys.platform))
 
 
 def get_working_path():
@@ -143,4 +144,5 @@ def get_working_path():
     elif Platform.mac_os in sys.platform:
         return path_mac_os
     else:
-        raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
+        raise RuntimeError(
+            "Unsupported operating system: {}".format(sys.platform))
