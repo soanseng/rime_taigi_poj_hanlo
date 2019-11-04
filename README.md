@@ -3,7 +3,7 @@
 
 ```
 docker build . -t rime
-docker run --rm  -t\
+docker run --rm -t \
   -v `pwd`/BDD:/rime_taigi_poj_hanlo/BDD \
   -v `pwd`/taigi_pojhanlo_sujiphoat:/rime_taigi_poj_hanlo/taigi_pojhanlo_sujiphoat \
   -e PYTHONPATH="/rime_taigi_poj_hanlo/BDD" \
