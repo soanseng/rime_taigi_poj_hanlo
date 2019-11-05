@@ -112,10 +112,22 @@ punctuator: # 設定標點符號表
 
 
 key_binder:
+  import_preset: default
   bindings:
     # 候選字換頁ê hotkey
-    - { when: composing, accept: Tab, send: Page_Down }
-    - { when: composing, accept: Shift+Tab, send: Page_Up }
-    - { when: composing, accept: bracketright, send: Page_Down }
-    - { when: composing, accept: bracketleft, send: Page_Up }
+    -  when: composing
+       accept: Tab
+       send: Page_Down
+
+    -  when: composing
+       accept: Shift+Tab
+       send: Page_Up
+
+    -  when: composing
+       accept: bracketright
+       send: Page_Down
+    
+    -  when: composing
+       accept: bracketleft
+       send: Page_Up
         
